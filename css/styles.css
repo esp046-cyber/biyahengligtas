@@ -52,3 +52,17 @@ dialog::backdrop{background:#0008;backdrop-filter:blur(6px)}
 .grab{width:44px;height:5px;border-radius:3px;background:#0005;margin:0 auto .8rem}
 .hot{display:grid;grid-template-columns:1fr}
 @media (horizontal-viewport-segments:2){main{max-width:none;grid-template-columns:1fr 1fr;align-items:start}header{grid-column:1/-1}}
+
+/* v3 */
+[data-theme=red]{--bg:#000;--fg:#ff3b30;--card:#060000;--gold:#ff3b30;--btn:#1a0000;--btnfg:#ff3b30;--blur:none}
+[data-theme=red] #sos{background:#300;color:#ff3b30}[data-theme=red] dialog{background:#060000;color:#ff3b30}
+input[type=checkbox]{width:auto}input[type=number]{width:6rem}
+#iosTip{position:fixed;left:1rem;right:1rem;bottom:calc(5rem + env(safe-area-inset-bottom));background:#fffdf7;color:#000;padding:.8rem 1rem;border-radius:1rem;text-align:center;z-index:40}
+
+/* v5 */
+.seg,.mgr{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center}.seg button{font-size:.85rem}
+.seg [aria-pressed=true]{outline:3px solid var(--gold);outline-offset:2px}button:disabled{opacity:.45;cursor:not-allowed}
+.fb{padding:.7rem 1rem;border-radius:1rem;background:var(--btn);color:var(--btnfg);cursor:pointer}
+#toast{position:fixed;left:1rem;right:1rem;top:calc(1rem + env(safe-area-inset-top));background:#000;color:#fff;padding:.8rem 1rem;border-radius:1rem;text-align:center;z-index:60}
+
+.pill{background:#1f9d55;color:#fff;border-radius:999px;padding:.25rem .8rem;font-size:.8rem;font-weight:700;white-space:nowrap}
