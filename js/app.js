@@ -23,7 +23,8 @@ $('cardBtn').onclick=()=>{buzz();const c=document.createElement('canvas');c.widt
  const g=x.createLinearGradient(0,0,0,1920);g.addColorStop(0,'#f6d9a8');g.addColorStop(1,'#0f2a43');x.fillStyle=g;x.fillRect(0,0,1080,1920);
  x.textAlign='center';x.fillStyle='#fffdf7';x.font='bold 80px Georgia';x.fillText('Biyaheng Ligtas',540,260);
  x.font='48px Georgia';let y=520;A.lines().slice(0,4).forEach(l=>{let ln='';l.split(' ').forEach(t=>{if((ln+t).length>28){x.fillText(ln,540,y);y+=70;ln=''}ln+=t+' '});x.fillText(ln,540,y);y+=130});
- x.font='bold 56px Georgia';x.fillText($('dest').value||'Ligtas na biyahe!',540,1700);
+ x.font='bold 56px Georgia';x.save();x.translate(540,1500);x.strokeStyle='#f0b64a';x.lineWidth=14;x.lineCap='round';x.beginPath();x.arc(0,0,90,0,7);x.moveTo(0,-62);x.lineTo(0,62);x.moveTo(-62,0);x.lineTo(62,0);x.stroke();x.restore();
+ x.fillText($('dest').value||'Ligtas na biyahe!',540,1730);x.font='40px Georgia';x.fillText(new Date().toLocaleDateString('fil-PH',{dateStyle:'long'}),540,1810);
  c.toBlob(b=>{const f=new File([b],'biyaheng-ligtas.png',{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f]});else{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=f.name;a.click()}})};
 $('sos').onclick=()=>{buzz();$('sosDlg').showModal()};
@@ -37,6 +38,11 @@ if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWork
 const A_=A;$('rate').oninput=e=>A_.rate=+e.target.value;
 $('eq').onchange=e=>{A_.eq=e.target.value;A_.ctx&&A_.setEq()};
 $('noise').onchange=e=>{A_.noise=e.target.checked;if(A_.playing)A_.noise?A_.startNoise():A_.stopNoise()};
+$('vNat').onclick=()=>A.setMode(true);$('vTts').onclick=()=>A.setMode(false);A.setMode(false);
+$('recPrev').onclick=()=>A.preview();$('recDel').onclick=()=>confirm('Burahin ang recording?')&&A.clearRec();$('recFile').onchange=e=>{const f=e.target.files[0];e.target.value='';A.importFile(f)};
+$('theta').onchange=e=>{A_.theta=e.target.checked;if(A_.playing)A_.theta?A_.startTheta():A_.stopTheta()};
+$('recBtn').onclick=()=>A.record();
+$('napBtn').onclick=e=>{const on=e.target.dataset.on!=='1';A_.nap(+$('napMin').value||30,on);e.target.dataset.on=on?'1':'0';e.target.textContent=on?'Kanselahin ang alarm':'Arrival alarm'};
 $('loop').onchange=e=>A_.loop=e.target.checked;$('a432').onchange=e=>A_.a432=e.target.checked;$('spatial').onchange=e=>A_.spatial=e.target.checked;
 // Golden particle burst on share / check-in
 const fx=$('fx'),fc=fx.getContext('2d');let ps=[];
@@ -58,3 +64,12 @@ function exportOG(){buzz();const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&l
   c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='og.png';a.click()})};
  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)}
 $('ogBtn').onclick=exportOG;
+
+// Hands-free keys (handlebar remotes usually send Space or media keys; media keys are handled by Media Session)
+addEventListener('keydown',e=>{if(/INPUT|SELECT|TEXTAREA|BUTTON/.test(e.target.tagName))return;
+ if(e.code==='Space'||e.code==='MediaPlayPause'){e.preventDefault();A.toggle()}else if(e.key==='r'||e.code==='MediaTrackPrevious')A.rewind()});
+// Standalone detection + iOS "Add to Home Screen" hint
+const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+if(standalone)$('install').hidden=true;
+else if(/iphone|ipad|ipod/i.test(navigator.userAgent)){let seen;try{seen=localStorage.tip}catch(e){}
+ if(!seen){$('iosTip').hidden=false;$('iosTip').onclick=()=>{$('iosTip').hidden=true;try{localStorage.tip=1}catch(e){}}}}
