@@ -33,7 +33,7 @@
     <h1>Biyaheng Ligtas</h1>
     <p class="sub">Panalangin ng manlalakbay</p>
     <select id="themeSel" aria-label="Display mode">
-      <option value="dawn">Dawn</option><option value="sun">Sikat ng araw</option><option value="oled">Battery saver</option><option value="paper">E-paper (mataas na contrast)</option>
+      <option value="dawn">Dawn</option><option value="sun">Sikat ng araw</option><option value="oled">Battery saver</option><option value="paper">E-paper (mataas na contrast)</option><option value="red">Night pilot (pulang ilaw)</option>
     </select>
   </header>
 
@@ -45,6 +45,7 @@
     </div>
     <svg id="wave" viewBox="0 0 200 40" aria-hidden="true"><polyline id="wl" fill="none" stroke="var(--gold)" stroke-width="2" points="0,20 200,20"/></svg>
     <div id="prayer" class="prayer"></div>
+    <div class="seg" role="group" aria-label="Boses"><button id="vNat" aria-pressed="false" disabled title="Mag-load o mag-record muna ng boses sa Tunog at setting">🎙 Natural Voiceover</button><button id="vTts" aria-pressed="true">🤖 Device Speech</button><span id="natPill" class="pill" role="status" hidden>● Natural Voice Active</span></div>
     <div class="ctrl">
       <button id="rew" aria-label="Ulitin">⏮</button>
       <button id="play" class="main" aria-label="Play">▶</button>
@@ -57,13 +58,18 @@
 <label>Bilis <input type="range" id="rate" min=".8" max="1.15" step=".05" value=".85"></label>
 <label>EQ <select id="eq"><option value="default">Default</option><option value="terminal">Terminal / jeep</option><option value="flight">In-flight / tahimik</option></select></label>
 <label><input type="checkbox" id="noise"> Brown noise</label><label><input type="checkbox" id="loop"> Ulit-ulitin</label>
-<label><input type="checkbox" id="a432" checked> 432 Hz</label><label><input type="checkbox" id="spatial" checked> 3D pan (earphones)</label></details>
+<label><input type="checkbox" id="a432" checked> 432 Hz</label><label><input type="checkbox" id="spatial" checked> 3D pan (earphones)</label>
+<label><input type="checkbox" id="theta"> 6 Hz theta beat (earphones)</label>
+<div class="mgr"><button id="recBtn">🎙 Itala ang boses</button><span id="recTime">00:00 / 01:00</span>
+<button id="recPrev" disabled>▶ Pakinggan</button><button id="recDel" disabled>Burahin ang Recording</button>
+<label class="fb" title="Nase-save sa device para offline at hindi na kailangang i-upload ulit">📁 Mag-load ng audio<input type="file" id="recFile" accept="audio/mp3,audio/opus,audio/ogg,audio/wav,audio/m4a,audio/*,.mp3,.opus,.ogg,.wav,.m4a" hidden></label></div>
+<label>Arrival alarm (minuto) <input type="number" id="napMin" min="1" max="720" value="30"></label><button id="napBtn">Arrival alarm</button></details>
   <section class="row">
     <button id="share">Ibahagi</button>
     <button id="checkin">Nakarating na ako</button>
     <button id="cardBtn">Gawing card</button><button id="ogBtn">I-save ang OG image</button>
   </section>
-  <input id="dest" placeholder="Pangalan / Destinasyon (para sa card)" aria-label="Destinasyon">
+  <input id="dest" placeholder="Ruta, hal. Manila ➔ Baguio (para sa card)" aria-label="Destinasyon">
 </main>
 
 <button id="sos" aria-label="Emergency">SOS</button>
@@ -72,6 +78,8 @@
 <li><a href="tel:*1627">PCG — (02) 8527-8481</a></li><li><a href="tel:136">136 — MMDA</a></li><li><a href="tel:117">117 — PNP</a></li></ul>
 <form method="dialog"><button>Isara</button></form></dialog>
 <div id="install" hidden><span>I-install ang app</span><button id="installBtn">Install</button><button id="installX" aria-label="Isara">✕</button></div>
+<div id="iosTip" hidden>Sa Safari: i-tap ang <svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 11V1M4.5 4.5 8 1l3.5 3.5M3 7H2v10h12V7h-1"/></svg> Share, saka “Add to Home Screen”.</div>
+<div id="toast" role="status" hidden></div>
 <canvas id="fx" aria-hidden="true"></canvas>
 <script src="js/icons-generator.js"></script>
 <script src="js/audio.js"></script>
