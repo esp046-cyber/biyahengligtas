@@ -1,0 +1,54 @@
+:root{--bg:linear-gradient(170deg,#f6d9a8,#9fc7d6 60%,#0f2a43);--fg:#0f2a43;--card:rgba(255,253,247,.78);--gold:#c98a1b;--btn:#0f2a43;--btnfg:#fffdf7;--blur:blur(18px)}
+[data-theme=sun]{--bg:#fff;--fg:#000;--card:#ffe94d;--gold:#000;--btn:#000;--btnfg:#fff;--blur:none}
+[data-theme=oled]{--bg:#000;--fg:#e8e2d0;--card:#0a0a0a;--gold:#f0b64a;--btn:#1a1a1a;--btnfg:#f0b64a;--blur:none}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100dvh}
+body{background:var(--bg);background-attachment:fixed;color:var(--fg);font:17px/1.5 system-ui,-apple-system,sans-serif;
+padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);transition:background .6s}
+main{max-width:34rem;margin:auto;padding:1rem;display:grid;gap:1rem}
+header{display:flex;flex-wrap:wrap;align-items:end;gap:.5rem;justify-content:space-between}
+h1{margin:0;font:700 clamp(1.8rem,7vw,2.6rem) Georgia,serif;letter-spacing:-.02em}
+.sub{margin:0;flex-basis:100%;opacity:.8}
+select,input,button{font:inherit;color:inherit}
+select,input{padding:.6rem;border-radius:.8rem;border:2px solid currentColor;background:transparent}
+input{width:100%}
+.card{background:var(--card);backdrop-filter:var(--blur);border-radius:1.6rem;padding:1.2rem;display:grid;gap:1rem;justify-items:center}
+@supports not (backdrop-filter:blur(1px)){.card{background:#fffdf7}}
+.medal{width:96px;color:var(--fg)}
+.prayer{font:clamp(1.15rem,4.6vw,1.45rem)/1.6 Georgia,serif;text-align:center;max-height:42dvh;overflow:auto;scroll-behavior:smooth;width:100%}
+.prayer p{margin:.4rem 0;opacity:.45;transition:opacity .4s,transform .4s;will-change:transform}
+.prayer p.on{opacity:1;transform:scale(1.03);font-weight:700}
+.ctrl,.row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+button{min-height:48px;min-width:48px;padding:0 1rem;border:0;border-radius:1rem;background:var(--btn);color:var(--btnfg);cursor:pointer}
+button.main{font-size:1.6rem;width:72px;border-radius:50%;height:72px}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+#sos{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));background:#c62828;color:#fff;border-radius:50%;width:56px;height:56px;font-weight:800}
+dialog{border:0;border-radius:1.4rem;padding:1.2rem;max-width:90vw;background:#fffdf7;color:#000}
+.hot{list-style:none;padding:0}.hot a{display:block;padding:.7rem 0;font-weight:600;color:inherit}
+#install{position:fixed;left:1rem;right:1rem;bottom:calc(5rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;align-items:center;background:var(--btn);color:var(--btnfg);padding:.6rem 1rem;border-radius:1rem}
+#install span{flex:1}#install button{background:var(--gold);color:#000}
+#offlineBar{background:#000;color:#fff;text-align:center;padding:.4rem;animation:drop .4s}
+@keyframes drop{from{transform:translateY(-100%)}}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-contrast:more){.card{background:#fff;color:#000}}
+
+/* v2 */
+:root{--gold:#c98a1b;--gold:oklch(.68 .14 75);--fg:#0f2a43;--fg:oklch(.27 .06 250)}
+[data-theme=sun]{--gold:#000;--fg:#000}
+[data-theme=paper]{--bg:#fff;--fg:#000;--card:#fff;--gold:#000;--btn:#fff;--btnfg:#000;--blur:none;font-family:Georgia,serif}
+[data-theme=paper] *{border-radius:0!important;box-shadow:none!important;text-shadow:none!important}
+[data-theme=paper] .card,[data-theme=paper] button,[data-theme=paper] select,[data-theme=paper] input{border:2px solid #000}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:2}
+#wave{width:100%;height:36px}
+.prayer .w{color:var(--gold);text-decoration:underline;text-underline-offset:4px}
+#set{justify-items:start;width:100%}#set label{display:flex;gap:.6rem;align-items:center}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
+.card{container-type:inline-size;width:100%}
+@container (max-width:22rem){.prayer{font-size:1.05rem}.ctrl{gap:.3rem}button{padding:0 .7rem}}
+dialog{position:fixed;inset:auto 0 0 0;margin:0;width:100%;max-width:none;border-radius:1.4rem 1.4rem 0 0;transition:transform .25s cubic-bezier(.3,1.4,.5,1)}
+dialog::backdrop{background:#0008;backdrop-filter:blur(6px)}
+.grab{width:44px;height:5px;border-radius:3px;background:#0005;margin:0 auto .8rem}
+.hot{display:grid;grid-template-columns:1fr}
+@media (horizontal-viewport-segments:2){main{max-width:none;grid-template-columns:1fr 1fr;align-items:start}header{grid-column:1/-1}}
