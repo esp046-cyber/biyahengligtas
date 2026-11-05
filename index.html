@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fil">
 <head>
 <meta charset="utf-8">
@@ -16,12 +16,13 @@
 <meta property="og:type" content="music.song">
 <meta property="og:title" content="Biyaheng Ligtas — Panalangin Bago Bumiyahe">
 <meta property="og:description" content="Pakinggan ang panalangin ng manlalakbay. Ligtas na biyahe sa iyo.">
-<!-- SET ONCE: replace USERNAME and REPO below with your GitHub Pages address (scrapers need absolute URLs and ignore JavaScript). -->
 <meta property="og:url" content="https://esp046-cyber.github.io/biyahengligtas/">
 <meta property="og:site_name" content="Biyaheng Ligtas">
 <meta property="og:image" content="https://esp046-cyber.github.io/biyahengligtas/og.png">
-<meta property="og:image:type" content="image/png"><meta property="og:image:alt" content="Biyaheng Ligtas — panalangin ng manlalakbay">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Biyaheng Ligtas — panalangin ng manlalakbay">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://esp046-cyber.github.io/biyahengligtas/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="css/styles.css">
@@ -33,7 +34,11 @@
     <h1>Biyaheng Ligtas</h1>
     <p class="sub">Panalangin ng manlalakbay</p>
     <select id="themeSel" aria-label="Display mode">
-      <option value="dawn">Dawn</option><option value="sun">Sikat ng araw</option><option value="oled">Battery saver</option><option value="paper">E-paper (mataas na contrast)</option><option value="red">Night pilot (pulang ilaw)</option>
+      <option value="dawn">Dawn</option>
+      <option value="sun">Sikat ng araw</option>
+      <option value="oled">Battery saver</option>
+      <option value="paper">E-paper (mataas na contrast)</option>
+      <option value="red">Night pilot (pulang ilaw)</option>
     </select>
   </header>
 
@@ -45,7 +50,7 @@
     </div>
     <svg id="wave" viewBox="0 0 200 40" aria-hidden="true"><polyline id="wl" fill="none" stroke="var(--gold)" stroke-width="2" points="0,20 200,20"/></svg>
     <div id="prayer" class="prayer"></div>
-    <div class="seg" role="group" aria-label="Boses"><button id="vNat" aria-pressed="false" disabled title="Mag-load o mag-record muna ng boses sa Tunog at setting">🎙 Natural Voiceover</button><button id="vTts" aria-pressed="true">🤖 Device Speech</button><span id="natPill" class="pill" role="status" hidden>● Natural Voice Active</span></div>
+    <div class="seg" role="group" aria-label="Boses"><button id="vNat" aria-pressed="false" disabled title="Mag-load o mag-record muna ng boses sa Tunog at setting">🎙 Natural Voiceover</button><button id="vTts" aria-pressed="true">🤖 Device Speech</button></div>
     <div class="ctrl">
       <button id="rew" aria-label="Ulitin">⏮</button>
       <button id="play" class="main" aria-label="Play">▶</button>
@@ -55,15 +60,18 @@
   </section>
 
   <details class="card" id="set"><summary>Tunog at setting</summary>
-<label>Bilis <input type="range" id="rate" min=".8" max="1.15" step=".05" value=".85"></label>
-<label>EQ <select id="eq"><option value="default">Default</option><option value="terminal">Terminal / jeep</option><option value="flight">In-flight / tahimik</option></select></label>
-<label><input type="checkbox" id="noise"> Brown noise</label><label><input type="checkbox" id="loop"> Ulit-ulitin</label>
-<label><input type="checkbox" id="a432" checked> 432 Hz</label><label><input type="checkbox" id="spatial" checked> 3D pan (earphones)</label>
-<label><input type="checkbox" id="theta"> 6 Hz theta beat (earphones)</label>
-<div class="mgr"><button id="recBtn">🎙 Itala ang boses</button><span id="recTime">00:00 / 01:00</span>
-<button id="recPrev" disabled>▶ Pakinggan</button><button id="recDel" disabled>Burahin ang Recording</button>
-<label class="fb" title="Nase-save sa device para offline at hindi na kailangang i-upload ulit">📁 Mag-load ng audio<input type="file" id="recFile" accept="audio/mp3,audio/opus,audio/ogg,audio/wav,audio/m4a,audio/*,.mp3,.opus,.ogg,.wav,.m4a" hidden></label></div>
-<label>Arrival alarm (minuto) <input type="number" id="napMin" min="1" max="720" value="30"></label><button id="napBtn">Arrival alarm</button></details>
+    <label>Bilis <input type="range" id="rate" min=".8" max="1.15" step=".05" value=".85"></label>
+    <label>EQ <select id="eq"><option value="default">Default</option><option value="terminal">Terminal / jeep</option><option value="flight">In-flight / tahimik</option></select></label>
+    <label><input type="checkbox" id="noise"> Brown noise</label><label><input type="checkbox" id="loop"> Ulit-ulitin</label>
+    <label><input type="checkbox" id="a432" checked> 432 Hz</label><label><input type="checkbox" id="spatial" checked> 3D pan (earphones)</label>
+    <label><input type="checkbox" id="theta"> 6 Hz theta beat (earphones)</label>
+    <div class="mgr">
+      <button id="recBtn">🎙 Itala ang boses</button><span id="recTime">00:00 / 01:00</span>
+      <button id="recPrev" disabled>▶ Pakinggan</button><button id="recDel" disabled>Burahin ang Recording</button>
+      <label class="fb" title="Nase-save sa device para offline at hindi na kailangang i-upload ulit">📁 Mag-load ng audio<input type="file" id="recFile" accept="audio/*" hidden></label>
+    </div>
+    <label>Arrival alarm (minuto) <input type="number" id="napMin" min="1" max="720" value="30"></label><button id="napBtn">Arrival alarm</button>
+  </details>
   <section class="row">
     <button id="share">Ibahagi</button>
     <button id="checkin">Nakarating na ako</button>
