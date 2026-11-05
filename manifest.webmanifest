@@ -1,0 +1,3 @@
+{"name":"Biyaheng Ligtas","short_name":"Biyahe","description":"Panalangin at basbas para sa manlalakbay","start_url":"./","scope":"./","display":"standalone","background_color":"#0f2a43","theme_color":"#0f2a43","lang":"fil","categories":["lifestyle","travel"],
+"icons":[{"src":"favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"},{"src":"favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"maskable"}],
+"shortcuts":[{"name":"Magdasal","url":"./#play","icons":[{"src":"favicon.svg","sizes":"any"}]}]}

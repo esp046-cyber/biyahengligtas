@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Biyaheng Ligtas — Panalangin Bago Bumiyahe</title>
+<meta name="description" content="Isang panalangin at basbas para sa bawat Pilipinong bumibiyahe. Gumagana kahit offline.">
+<meta name="theme-color" content="#0f2a43">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" id="touchIcon" href="favicon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Biyaheng Ligtas">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="music.song">
+<meta property="og:title" content="Biyaheng Ligtas — Panalangin Bago Bumiyahe">
+<meta property="og:description" content="Pakinggan ang panalangin ng manlalakbay. Ligtas na biyahe sa iyo.">
+<!-- SET ONCE: replace USERNAME and REPO below with your GitHub Pages address (scrapers need absolute URLs and ignore JavaScript). -->
+<meta property="og:url" content="https://USERNAME.github.io/REPO/">
+<meta property="og:site_name" content="Biyaheng Ligtas">
+<meta property="og:image" content="https://USERNAME.github.io/REPO/og.png">
+<meta property="og:image:type" content="image/png"><meta property="og:image:alt" content="Biyaheng Ligtas — panalangin ng manlalakbay">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://USERNAME.github.io/REPO/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-theme="dawn">
+<div id="offlineBar" hidden>Offline ka — gumagana pa rin ang app.</div>
+<main>
+  <header>
+    <h1>Biyaheng Ligtas</h1>
+    <p class="sub">Panalangin ng manlalakbay</p>
+    <select id="themeSel" aria-label="Display mode">
+      <option value="dawn">Dawn</option><option value="sun">Sikat ng araw</option><option value="oled">Battery saver</option><option value="paper">E-paper (mataas na contrast)</option>
+    </select>
+  </header>
+
+  <section class="card" aria-live="polite">
+    <div class="medal" aria-hidden="true">
+      <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="4"/>
+      <circle id="ring" cx="60" cy="60" r="54" fill="none" stroke="var(--gold)" stroke-width="6" stroke-linecap="round" stroke-dasharray="339.3" stroke-dashoffset="339.3" transform="rotate(-90 60 60)"/>
+      <path d="M60 28v64M28 60h64M60 28l8 14-8-4-8 4z" stroke="currentColor" stroke-width="4" fill="none"/></svg>
+    </div>
+    <svg id="wave" viewBox="0 0 200 40" aria-hidden="true"><polyline id="wl" fill="none" stroke="var(--gold)" stroke-width="2" points="0,20 200,20"/></svg>
+    <div id="prayer" class="prayer"></div>
+    <div class="ctrl">
+      <button id="rew" aria-label="Ulitin">⏮</button>
+      <button id="play" class="main" aria-label="Play">▶</button>
+      <button id="voice" aria-pressed="true" aria-label="Boses">🗣</button>
+      <button id="lang" aria-label="Wika">TL</button>
+    </div>
+  </section>
+
+  <details class="card" id="set"><summary>Tunog at setting</summary>
+<label>Bilis <input type="range" id="rate" min=".8" max="1.15" step=".05" value=".85"></label>
+<label>EQ <select id="eq"><option value="default">Default</option><option value="terminal">Terminal / jeep</option><option value="flight">In-flight / tahimik</option></select></label>
+<label><input type="checkbox" id="noise"> Brown noise</label><label><input type="checkbox" id="loop"> Ulit-ulitin</label>
+<label><input type="checkbox" id="a432" checked> 432 Hz</label><label><input type="checkbox" id="spatial" checked> 3D pan (earphones)</label></details>
+  <section class="row">
+    <button id="share">Ibahagi</button>
+    <button id="checkin">Nakarating na ako</button>
+    <button id="cardBtn">Gawing card</button><button id="ogBtn">I-save ang OG image</button>
+  </section>
+  <input id="dest" placeholder="Pangalan / Destinasyon (para sa card)" aria-label="Destinasyon">
+</main>
+
+<button id="sos" aria-label="Emergency">SOS</button>
+<dialog id="sosDlg"><div class="grab"></div><h2>Emergency hotlines</h2>
+<ul class="hot"><li><a href="tel:911">911 — National Emergency</a></li><li><a href="tel:143">143 — Red Cross</a></li>
+<li><a href="tel:*1627">PCG — (02) 8527-8481</a></li><li><a href="tel:136">136 — MMDA</a></li><li><a href="tel:117">117 — PNP</a></li></ul>
+<form method="dialog"><button>Isara</button></form></dialog>
+<div id="install" hidden><span>I-install ang app</span><button id="installBtn">Install</button><button id="installX" aria-label="Isara">✕</button></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<script src="js/icons-generator.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/app.js"></script>
+</body></html>
